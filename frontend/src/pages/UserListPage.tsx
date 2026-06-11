@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { getUsers } from "../services/userService";
 import { Link } from "react-router-dom";
-import { deleteUser } from "../services/userService";
+import { getUsers, deleteUser } from "../services/userService";
 
 function UserListPage() {
   const [users, setUsers] = useState([]);
@@ -23,6 +22,7 @@ function UserListPage() {
   return (
     <div>
       <h1>Gestión de Usuarios</h1>
+
       <Link to="/create">
         <button>Nuevo Usuario</button>
       </Link>
@@ -44,6 +44,10 @@ function UserListPage() {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>
+                <Link to={`/edit/${user.id}`}>
+                  <button>Editar</button>
+                </Link>
+
                 <button onClick={() => handleDelete(user.id)}>
                   Eliminar
                 </button>
