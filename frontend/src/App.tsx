@@ -1,7 +1,7 @@
-import UserCreatePage from "./pages/UserCreatePage";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return <UserCreatePage />;
+  return <AppRoutes />;
 }
 
 export default App 

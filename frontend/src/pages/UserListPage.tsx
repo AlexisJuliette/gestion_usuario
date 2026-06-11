@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "../services/userService";
+import { Link } from "react-router-dom";
 
 function UserListPage() {
   const [users, setUsers] = useState([]);
@@ -16,6 +17,9 @@ function UserListPage() {
   return (
     <div>
       <h1>Gestión de Usuarios</h1>
+      <Link to="/create">
+        <button>Nuevo Usuario</button>
+      </Link>
 
       <table border={1}>
         <thead>

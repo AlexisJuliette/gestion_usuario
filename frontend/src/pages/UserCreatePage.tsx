@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createUser } from "../services/userService";
+import { Link } from "react-router-dom";
 
 function UserCreatePage() {
   const [name, setName] = useState("");
@@ -31,6 +32,9 @@ function UserCreatePage() {
   return (
     <div>
       <h2>Crear Usuario</h2>
+      <Link to="/">
+        <button type="button">Volver</button>
+      </Link>
 
       <form onSubmit={handleSubmit}>
         <input
