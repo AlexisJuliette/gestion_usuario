@@ -41,7 +41,7 @@ function UserEditPage() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Editar Usuario</h2>
 
       <form onSubmit={handleSubmit}>

@@ -24,12 +24,21 @@ function UserListPage() {
   };
 
   return (
-    <div>
-      <h1>Gestión de Usuarios</h1>
+    <div className="container">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "20px",
+     }}
+  >
+     <h1>Gestión de Usuarios</h1>
 
-      <Link to="/create">
-        <button>Nuevo Usuario</button>
-      </Link>
+     <Link to="/create">
+      <button>+ Nuevo Usuario</button>
+     </Link>
+    </div>
 
       <table border={1}>
         <thead>

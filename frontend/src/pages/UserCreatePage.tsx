@@ -30,7 +30,7 @@ function UserCreatePage() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Crear Usuario</h2>
       <Link to="/">
         <button type="button">Volver</button>
