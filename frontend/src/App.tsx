@@ -1,7 +1,7 @@
-import UserListPage from "./pages/UserListPage";
+import UserCreatePage from "./pages/UserCreatePage";
 
 function App() {
-  return <UserListPage />;
+  return <UserCreatePage />;
 }
 
-export default App
+export default App 
