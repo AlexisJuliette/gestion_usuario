@@ -25,15 +25,37 @@ public class UserService {
     }
 
     public User save(User user) {
-        return userRepository.save(user);
+        validateUser(user);
+            return userRepository.save(user);
     }
 
     public User update(Long id, User user) {
-    findById(id);
-    return userRepository.save(user);
+        findById(id);
+        validateUser(user);
+           return userRepository.save(user);
     }
 
     public void delete(Long id) {
         userRepository.deleteById(id);
+    }
+
+    private void validateUser(User user) {
+        if (user.getName() == null || user.getName().isBlank()) {
+            throw new RuntimeException("El nombre es obligatorio");
+        }
+        if (user.getLastname() == null || user.getLastname().isBlank()) {
+           throw new RuntimeException("El apellido es obligatorio");
+        }
+
+        if (user.getEmail() == null || user.getEmail().isEmpty()) {
+            throw new RuntimeException("El email es obligatorio");
+        }
+        if (!user.getEmail().contains("@")) {
+           throw new RuntimeException("El email no es válido");
+        }
+
+        if (user.getRole() == null || user.getRole().getId() == null) {
+           throw new RuntimeException("El rol es obligatorio");
+        }
     }
 }
