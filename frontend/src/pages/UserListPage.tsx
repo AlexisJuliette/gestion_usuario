@@ -59,6 +59,24 @@ function UserListPage() {
         <button onClick={handleClearSearch}>Limpiar</button>
       </div>
 
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          marginBottom: "20px",
+      }}
+  >
+      <div className="stat-card">
+        <h3>Total Usuarios</h3>
+        <h2>{users.length}</h2>
+    </div>
+
+  <div className="stat-card">
+    <h3>Estado</h3>
+    <h2>Activos</h2>
+  </div>
+</div>
+
       <table border={1}>
         <thead>
           <tr>

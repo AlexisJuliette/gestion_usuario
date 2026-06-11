@@ -124,3 +124,21 @@ form {
     transform: translateY(0px);
   }
 }
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 180px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+  margin: 0;
+  color: #666;
+}
+
+.stat-card h2 {
+  margin-top: 10px;
+  color: #667eea;
+}
