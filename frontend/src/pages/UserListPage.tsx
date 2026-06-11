@@ -15,8 +15,12 @@ function UserListPage() {
   };
 
   const handleDelete = async (id: number) => {
-    await deleteUser(id);
-    loadUsers();
+  const confirmed = window.confirm("¿Está seguro de eliminar este usuario?");
+
+  if (!confirmed) return;
+
+  await deleteUser(id);
+  loadUsers();
   };
 
   return (
