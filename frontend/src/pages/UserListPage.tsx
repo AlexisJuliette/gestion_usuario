@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getUsers, deleteUser } from "../services/userService";
+import { getUsers, deleteUser, getUserByEmail } from "../services/userService";
 
 function UserListPage() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<any[]>([]);
+  const [searchEmail, setSearchEmail] = useState("");
 
   useEffect(() => {
     loadUsers();
@@ -23,22 +24,40 @@ function UserListPage() {
   loadUsers();
   };
 
+  const handleSearch = async () => {
+    if (!searchEmail.trim()) {
+      loadUsers();
+      return;
+  }
+
+  const data = await getUserByEmail(searchEmail);
+  setUsers([data]);
+  };
+
+  const handleClearSearch = () => {
+  setSearchEmail("");
+  loadUsers();
+  };
   return (
     <div className="container">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "20px",
-     }}
-  >
-     <h1>Gestión de Usuarios</h1>
+     <div className="header-actions">
+      <h1>Gestión de Usuarios</h1>
 
      <Link to="/create">
       <button>+ Nuevo Usuario</button>
      </Link>
     </div>
+
+    <div className="search-box">
+      <input
+        placeholder="Buscar por email"
+        value={searchEmail}
+        onChange={(e) => setSearchEmail(e.target.value)}
+        />
+
+        <button onClick={handleSearch}>Buscar</button>
+        <button onClick={handleClearSearch}>Limpiar</button>
+      </div>
 
       <table border={1}>
         <thead>

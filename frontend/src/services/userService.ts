@@ -25,3 +25,8 @@ export const updateUser = async (id: number, user: any) => {
   const response = await axios.put(`${API_URL}/${id}`, user);
   return response.data;
 };
+
+export const getUserByEmail = async (email: string) => {
+  const response = await axios.get(`${API_URL}/email/${email}`);
+  return response.data;
+};
