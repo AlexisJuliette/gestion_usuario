@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "../services/userService";
 import { Link } from "react-router-dom";
+import { deleteUser } from "../services/userService";
 
 function UserListPage() {
   const [users, setUsers] = useState([]);
@@ -12,6 +13,11 @@ function UserListPage() {
   const loadUsers = async () => {
     const data = await getUsers();
     setUsers(data);
+  };
+
+  const handleDelete = async (id: number) => {
+    await deleteUser(id);
+    loadUsers();
   };
 
   return (
@@ -27,6 +33,7 @@ function UserListPage() {
             <th>ID</th>
             <th>Nombre</th>
             <th>Email</th>
+            <th>Acciones</th>
           </tr>
         </thead>
 
@@ -36,6 +43,11 @@ function UserListPage() {
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
+              <td>
+                <button onClick={() => handleDelete(user.id)}>
+                  Eliminar
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
